@@ -1,0 +1,73 @@
+{
+  "repo": "tensor-mesh-membership-pipe",
+  "language": "SQL",
+  "category": "Distributed systems",
+  "goal": "Implement an SQL distributed systems project for membership constraint solving, using bounded scenario files and conflict explanations.",
+  "review_model": {
+    "terms": [
+      "quorum health",
+      "lease drift",
+      "replica lag",
+      "membership churn"
+    ],
+    "lanes": [
+      "ship",
+      "watch",
+      "hold"
+    ],
+    "score": "signal * 2 + slack + confidence - drag * 3",
+    "purpose": "surface the domain-specific cases that need the most careful review"
+  },
+  "cases": [
+    {
+      "name": "baseline",
+      "focus": "quorum health",
+      "signal": 50,
+      "slack": 20,
+      "drag": 13,
+      "confidence": 51,
+      "score": 132,
+      "lane": "watch"
+    },
+    {
+      "name": "stress",
+      "focus": "lease drift",
+      "signal": 59,
+      "slack": 33,
+      "drag": 20,
+      "confidence": 46,
+      "score": 137,
+      "lane": "watch"
+    },
+    {
+      "name": "edge",
+      "focus": "replica lag",
+      "signal": 58,
+      "slack": 42,
+      "drag": 8,
+      "confidence": 70,
+      "score": 204,
+      "lane": "ship"
+    },
+    {
+      "name": "recovery",
+      "focus": "membership churn",
+      "signal": 76,
+      "slack": 27,
+      "drag": 25,
+      "confidence": 88,
+      "score": 192,
+      "lane": "ship"
+    },
+    {
+      "name": "stale",
+      "focus": "quorum health",
+      "signal": 55,
+      "slack": 31,
+      "drag": 31,
+      "confidence": 80,
+      "score": 128,
+      "lane": "watch"
+    }
+  ]
+}
